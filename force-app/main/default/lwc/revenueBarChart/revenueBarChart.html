@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Projected Revenue Generated Quarterly/Monthly/Weekly">
+        <div class="slds-m-around_medium">
+            <lightning-combobox
+                name="filter"
+                label="Filter"
+                value={filter}
+                placeholder="Select Filter"
+                options={filterOptions}
+                onchange={handleFilterChange}>
+            </lightning-combobox>
+        </div>
+        <div class="slds-m-around_medium">
+            <canvas lwc:dom="manual" class="chart"></canvas>
+        </div>
+    </lightning-card>
+</template>

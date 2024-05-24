@@ -1,0 +1,38 @@
+/* dynamicInputComponent.css */
+.container {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.heading {
+    margin-top: 10px;
+}
+
+.section {
+    padding: 2%;
+    border: 1px solid rgb(109, 107, 107);
+    border-radius: 1rem;
+    margin-bottom: 10px;
+}
+
+h1{
+    font-size: large;
+    font-weight: 700;
+}
+
+h2{
+    font-size: medium;
+    font-weight: 600;
+}
+
+.add-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+
+.readOnly .slds-input{
+    border:1px solid;
+    border-radius: 1rem;
+    padding-left: 2%;
+}

@@ -1,0 +1,49 @@
+<template>
+        <div class="slds-form slds-form_stacked">
+            <!-- <div class="grid-class">
+                <div>                    
+                    <lightning-input
+                        type="checkbox"
+                        label="Check For More Then One CC Contacts"
+                        checked={isMultiEntry}
+                        onchange={handleLookupTypeChange}
+                    ></lightning-input>
+                </div>
+                <div lwc:if={isMultiEntry}>
+                    <lightning-input
+                        type="number"
+                        label="Max Selected Contacts"
+                        min="1"
+                        value={maxSelectionSize}
+                        onchange={handleMaxSelectionSizeChange}
+                        required
+                    ></lightning-input>
+                </div>
+            </div> -->
+
+            <!-- <p class="slds-var-m-vertical_large">
+                <strong>Note:</strong> new record creation options only work in Lightning Experience.
+            </p> -->
+
+            <c-custom-multi-select-lookup
+                selection={initialSelection}
+                email-selection={initialSelection}
+                errors={errors}
+                onsearch={handleLookupSearch}
+                onselectionchange={handleLookupSelectionChange}
+                onemailselectionchange={handleLookupEmailSelectionChange}
+                label="Search Contacts For CC"
+                placeholder="Search Salesforce"
+                is-multi-entry={isMultiEntry}
+                new-record-options={newRecordOptions}
+                required
+            >
+            </c-custom-multi-select-lookup>
+
+            <!-- <div class="slds-var-m-top_large">
+                <lightning-button label="Focus" onclick={handleFocus}></lightning-button>&nbsp;
+                <lightning-button label="Clear All" onclick={handleClear}></lightning-button>&nbsp;
+                <lightning-button variant="brand" label="Submit" onclick={handleSubmit}></lightning-button>
+            </div> -->
+        </div>
+</template>

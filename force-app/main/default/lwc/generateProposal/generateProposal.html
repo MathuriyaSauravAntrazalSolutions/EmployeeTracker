@@ -1,0 +1,55 @@
+<!-- proposalModal.html -->
+<template>
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" class={modalClass}>
+            <div class="slds-modal__container modal-container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse close-button" title="Close" onclick={handleClose}>
+                        <lightning-icon icon-name="utility:close" alternative-text="Close"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse minimize-button" title="Minimize" onclick={handleMinimize}>
+                        <lightning-icon icon-name="utility:dash" alternative-text="Minimize"></lightning-icon>
+                        <span class="slds-assistive-text">Minimize</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium">Create Proposal</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <label>Summary</label>
+                    <lightning-input-rich-text label="Summary" placeholder="Summary" value={proposal.proposalFields.Summary__c} onchange={handleSummaryChange}></lightning-input-rich-text>
+                    <!-- Conclusion -->
+                    <label>Conclusion</label>
+                    <lightning-input-rich-text label="Conclusion" placeholder="Conclusion" value={proposal.proposalFields.Conclusion__c} onchange={handleConclusionChange}></lightning-input-rich-text>
+                    <!-- Delivery Timeline -->
+                    <lightning-input type="date" label="Delivery Timeline" value={proposal.proposalFields.Delivery_Date__c} onchange={handleTimelineChange}></lightning-input>
+                    
+                    <!-- Additional Sections -->
+                    <!-- <lightning-input-rich-text label="Section 1" value={section1} onchange={handleSection1Change}></lightning-input-rich-text> -->
+                    <!-- Repeat for other sections -->
+                    
+                    <div class="childs">
+                        <c-dynamic-input-component heading="Line Items" onchildchange={handleChildChange}></c-dynamic-input-component>
+                    </div>
+                    
+                    <lightning-input type="number" label="Total Discount(%)" value={proposal.proposalFields.Total_Discount__c} onchange={handleTotalDiscount} required></lightning-input>
+                    <lightning-input class="readOnly" type="text" label="Total Cost" value={proposal.proposalFields.Total_Estimated_Cost__c} read-only></lightning-input>
+                    <lightning-input class="readOnly" type="text" label="Total Cost After Discount" value={proposal.proposalFields.Price_After_Discount__c} read-only></lightning-input>
+            
+                    <div class="button-section">
+                        <!-- Upload Files -->
+                        <lightning-file-upload
+                            label="Upload Files"
+                            accept={acceptedFormats}
+                            record-id={recordId}
+                            onuploadfinished={handleUploadFinished}>
+                        </lightning-file-upload>
+                    
+                        <!-- Create Proposal Button -->
+                        <lightning-button label="Create Proposal" onclick={createProposal}></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" if:true={isNonMinimized}></div>
+    </template>
+</template>

@@ -1,0 +1,38 @@
+<!-- dynamicInputComponent.html -->
+<template>
+    <div class="container">
+        <!-- Add Section Button -->
+        <div class="add-section">
+            <h1>{heading}</h1>
+            <lightning-button-icon icon-name="utility:add" alternative-text="Add Section" onclick={addSection}></lightning-button-icon>
+        </div>
+
+
+        <!-- Dynamic Sections -->
+        <template for:each={lineItems} for:item="section" >
+            <div key={section.index} class="section">
+                <h2>Line Item: {section.index}</h2>
+                <label>Challange Faced</label>
+                <lightning-input-rich-text label="Challange Faced" placeholder="Challange Faced" value={section.Challange_Faced__c} onchange={handleChange} data-index={section.index} required></lightning-input-rich-text>
+                <label>Proposed Solution</label>
+                <lightning-input-rich-text label="Proposed Solution" placeholder="Proposed Solution" value={section.Solution__c} onchange={handleChange} data-index={section.index} required></lightning-input-rich-text>
+                <label>Service Offered</label>
+                <lightning-input-rich-text label="Service Offered" placeholder="Service Offered" value={section.Service_Offered__c} onchange={handleChange} data-index={section.index} required></lightning-input-rich-text>
+                <label>Description</label>
+                <lightning-input-rich-text label="Description" placeholder="Description" value={section.Description__c} onchange={handleChange} data-index={section.index} required></lightning-input-rich-text>
+                <lightning-input label="Estimated Time(Hours)" type="number" value={section.Estimated_Hours__c} onchange={handleChange} data-index={section.index} required></lightning-input>
+                <lightning-input label="Rate Per Hour" type="number" value={section.Rate_Per_Hour__c} onchange={handleChange} data-index={section.index} required></lightning-input>
+                <lightning-input label="Total Price" value={section.Total_Cost__c} read-only class="readOnly"></lightning-input>
+                <lightning-button label="Add To Line Items" onclick={handleLineItem} data-index={section.index}></lightning-button>
+                <template if:true={section.removable}>
+                    <lightning-button
+                        label="Remove This Line Item"
+                        onclick={handleRemoveSection}
+                        data-index={section.index}
+                        class="remove-icon">
+                    </lightning-button>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

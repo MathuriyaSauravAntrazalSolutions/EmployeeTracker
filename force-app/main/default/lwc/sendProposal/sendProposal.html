@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="Owner's Email">
+        <div class="slds-p-around_medium">
+            <lightning-input label="Owner's Email" value={ownerEmail} readonly></lightning-input>
+        </div>
+    </lightning-card>
+    <lightning-card title="Associated Contacts">
+        <div class="slds-p-around_medium">
+            <!-- <lightning-combobox
+                label="Select Value"
+                value={selectedValue}
+                options={picklistValues}
+                onchange={handleChange}>
+            </lightning-combobox> -->
+            <c-custom-lookup-lwc icon-name="standard:contact"
+                         s-object-api-name="Contact"
+                         label="To"
+                         account-id={accountId}
+                         onlookupupdate={lookupRecord}
+                         placeholder="Search Contact here..."
+            >
+            </c-custom-lookup-lwc>
+
+
+            <!-- MultiSelect Lookup -->
+            <c-multi-select-luookup 
+                label="Add More Contacts" 
+                onsubmitcontacts={handleLookupContactSubmit}
+                onsubmitemails={handleLookupEmailSubmit}>
+            </c-multi-select-luookup>
+
+            
+            <div class="slds-p-top_medium button-section">
+                <lightning-button label="Send Proposal" onclick={handleSend} variant="brand"></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

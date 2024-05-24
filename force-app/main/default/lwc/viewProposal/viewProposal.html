@@ -1,0 +1,15 @@
+<!-- opportunityProposalList.html -->
+<template>
+    <lightning-card title="Proposal Records" icon-name="standard:document">
+        <div class="slds-m-around_medium">
+            <lightning-datatable
+                key-field="Id"
+                data={proposals}
+                columns={columns}
+                hide-checkbox-column="true"
+                onrowaction={handleRowAction}
+                row-number-offset>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

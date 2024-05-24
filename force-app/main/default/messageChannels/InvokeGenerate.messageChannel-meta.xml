@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>InokeGenerate</masterLabel>
+    <isExposed>true</isExposed>
+    <description>Message Channel to pass the flag to generateProposal</description>
+    <lightningMessageFields>
+        <fieldName>isModal</fieldName>
+        <description>This is the flag of boolean type to manipulate Other Component</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

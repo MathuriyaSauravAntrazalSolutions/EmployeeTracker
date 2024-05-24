@@ -1,0 +1,1091 @@
+<apex:page controller="VFPageController" renderAs="Pdf" applyBodyTag="false" applyHtmlTag="false" showHeader="false">
+    <html>
+
+<head>
+  
+    <style type="text/css">
+        @import url(https://themes.googleusercontent.com/fonts/css?kit=fpjTOVmNbO4Lz34iLyptLaQbUnfrlzX9YptpOnB30vidU2UdszIFv-JbwcPrcubs);
+
+        .lst-kix_ncmzb54p9gn9-6>li {
+            counter-increment: lst-ctn-kix_ncmzb54p9gn9-6
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-8.start {
+            counter-reset: lst-ctn-kix_ncmzb54p9gn9-8 0
+        }
+
+        .lst-kix_ncmzb54p9gn9-0>li {
+            counter-increment: lst-ctn-kix_ncmzb54p9gn9-0
+        }
+
+        .lst-kix_ncmzb54p9gn9-1>li:before {
+            content: "" counter(lst-ctn-kix_ncmzb54p9gn9-1, lower-latin) ". "
+        }
+
+        .lst-kix_ncmzb54p9gn9-0>li:before {
+            content: "" counter(lst-ctn-kix_ncmzb54p9gn9-0, decimal) ". "
+        }
+
+        .lst-kix_ncmzb54p9gn9-3>li {
+            counter-increment: lst-ctn-kix_ncmzb54p9gn9-3
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-1.start {
+            counter-reset: lst-ctn-kix_ncmzb54p9gn9-1 0
+        }
+
+        .lst-kix_ncmzb54p9gn9-6>li:before {
+            content: "" counter(lst-ctn-kix_ncmzb54p9gn9-6, decimal) ". "
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-6.start {
+            counter-reset: lst-ctn-kix_ncmzb54p9gn9-6 0
+        }
+
+        .lst-kix_ncmzb54p9gn9-7>li:before {
+            content: "" counter(lst-ctn-kix_ncmzb54p9gn9-7, lower-latin) ". "
+        }
+
+        .lst-kix_ncmzb54p9gn9-8>li {
+            counter-increment: lst-ctn-kix_ncmzb54p9gn9-8
+        }
+
+        .lst-kix_ncmzb54p9gn9-8>li:before {
+            content: "" counter(lst-ctn-kix_ncmzb54p9gn9-8, lower-roman) ". "
+        }
+
+        .lst-kix_ncmzb54p9gn9-2>li {
+            counter-increment: lst-ctn-kix_ncmzb54p9gn9-2
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-4.start {
+            counter-reset: lst-ctn-kix_ncmzb54p9gn9-4 0
+        }
+
+        .lst-kix_ncmzb54p9gn9-5>li {
+            counter-increment: lst-ctn-kix_ncmzb54p9gn9-5
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-2.start {
+            counter-reset: lst-ctn-kix_ncmzb54p9gn9-2 0
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-7.start {
+            counter-reset: lst-ctn-kix_ncmzb54p9gn9-7 0
+        }
+
+        .lst-kix_ncmzb54p9gn9-1>li {
+            counter-increment: lst-ctn-kix_ncmzb54p9gn9-1
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-5.start {
+            counter-reset: lst-ctn-kix_ncmzb54p9gn9-5 0
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-6 {
+            list-style-type: none
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-5 {
+            list-style-type: none
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-8 {
+            list-style-type: none
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-7 {
+            list-style-type: none
+        }
+
+        .lst-kix_ncmzb54p9gn9-4>li {
+            counter-increment: lst-ctn-kix_ncmzb54p9gn9-4
+        }
+
+        .lst-kix_ncmzb54p9gn9-5>li:before {
+            content: "" counter(lst-ctn-kix_ncmzb54p9gn9-5, lower-roman) ". "
+        }
+
+        .lst-kix_ncmzb54p9gn9-4>li:before {
+            content: "" counter(lst-ctn-kix_ncmzb54p9gn9-4, lower-latin) ". "
+        }
+
+        .lst-kix_ncmzb54p9gn9-7>li {
+            counter-increment: lst-ctn-kix_ncmzb54p9gn9-7
+        }
+
+        .lst-kix_ncmzb54p9gn9-3>li:before {
+            content: "" counter(lst-ctn-kix_ncmzb54p9gn9-3, decimal) ". "
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-0 {
+            list-style-type: none
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-0.start {
+            counter-reset: lst-ctn-kix_ncmzb54p9gn9-0 0
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-3.start {
+            counter-reset: lst-ctn-kix_ncmzb54p9gn9-3 0
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-2 {
+            list-style-type: none
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-1 {
+            list-style-type: none
+        }
+
+        .lst-kix_ncmzb54p9gn9-2>li:before {
+            content: "" counter(lst-ctn-kix_ncmzb54p9gn9-2, lower-roman) ". "
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-4 {
+            list-style-type: none
+        }
+
+        ol.lst-kix_ncmzb54p9gn9-3 {
+            list-style-type: none
+        }
+
+        ol {
+            margin: 0;
+            padding: 0
+        }
+
+        table td,
+        table th {
+            padding: 0
+        }
+
+        .c51 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #b8cce4;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 178.5pt;
+            border-top-color: #b8cce4;
+            border-bottom-style: solid
+        }
+
+        .c3 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #b8cce4;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 108.8pt;
+            border-top-color: #b8cce4;
+            border-bottom-style: solid
+        }
+
+        .c43 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #b8cce4;
+            border-top-width: 1.5pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 65.2pt;
+            border-top-color: #95b3d7;
+            border-bottom-style: solid
+        }
+
+        .c52 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #b8cce4;
+            border-top-width: 1.5pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 108.8pt;
+            border-top-color: #95b3d7;
+            border-bottom-style: solid
+        }
+
+        .c4 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #b8cce4;
+            border-top-width: 1.5pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 106.5pt;
+            border-top-color: #95b3d7;
+            border-bottom-style: solid
+        }
+
+        .c50 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #95b3d7;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1.5pt;
+            width: 66pt;
+            border-top-color: #b8cce4;
+            border-bottom-style: solid
+        }
+
+        .c41 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #95b3d7;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1.5pt;
+            width: 108.8pt;
+            border-top-color: #b8cce4;
+            border-bottom-style: solid
+        }
+
+        .c30 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #b8cce4;
+            border-top-width: 1.5pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 66pt;
+            border-top-color: #95b3d7;
+            border-bottom-style: solid
+        }
+
+        .c40 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #b8cce4;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 66pt;
+            border-top-color: #b8cce4;
+            border-bottom-style: solid
+        }
+
+        .c65 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #95b3d7;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1.5pt;
+            width: 106.5pt;
+            border-top-color: #b8cce4;
+            border-bottom-style: solid
+        }
+
+        .c62 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #95b3d7;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1.5pt;
+            width: 65.2pt;
+            border-top-color: #b8cce4;
+            border-bottom-style: solid
+        }
+
+        .c60 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #b8cce4;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 106.5pt;
+            border-top-color: #b8cce4;
+            border-bottom-style: solid
+        }
+
+        .c59 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #95b3d7;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1.5pt;
+            width: 178.5pt;
+            border-top-color: #b8cce4;
+            border-bottom-style: solid
+        }
+
+        .c21 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #b8cce4;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 65.2pt;
+            border-top-color: #b8cce4;
+            border-bottom-style: solid
+        }
+
+        .c45 {
+            border-right-style: solid;
+            padding: 0pt 5pt 0pt 5pt;
+            border-bottom-color: #b8cce4;
+            border-top-width: 1.5pt;
+            border-right-width: 1pt;
+            border-left-color: #b8cce4;
+            vertical-align: top;
+            border-right-color: #b8cce4;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 178.5pt;
+            border-top-color: #95b3d7;
+            border-bottom-style: solid
+        }
+
+        .c48 {
+            -webkit-text-decoration-skip: none;
+            color: #e06666;
+            font-weight: 700;
+            text-decoration: underline;
+            vertical-align: baseline;
+            text-decoration-skip-ink: none;
+            font-size: 18pt;
+            font-family: "Calibri";
+            font-style: normal
+        }
+
+        .c18 {
+            margin-left: 60pt;
+            padding-top: 2pt;
+            text-indent: -24pt;
+            padding-bottom: 2pt;
+            line-height: 1.5;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c42 {
+            margin-left: 432pt;
+            padding-top: 0pt;
+            text-indent: 36pt;
+            padding-bottom: 0pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c5 {
+            background-color: #ffffff;
+            color: #1013a3;
+            font-weight: 700;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 24pt;
+            font-family: "Arial";
+            font-style: normal
+        }
+
+        .c15 {
+            margin-left: 72pt;
+            padding-top: 0pt;
+            text-indent: 36pt;
+            padding-bottom: 0pt;
+            line-height: 1.15;
+            text-align: left;
+            height: 11pt
+        }
+
+        .c14 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: center;
+            height: 11pt
+        }
+
+        .c29 {
+            color: #000000;
+            font-weight: 400;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 18pt;
+            font-family: "Calibri";
+            font-style: normal
+        }
+
+        .c28 {
+            padding-top: 10pt;
+            padding-bottom: 0pt;
+            line-height: 1.1500017857142857;
+            orphans: 2;
+            widows: 2;
+            text-align: left;
+            height: 18pt
+        }
+
+        .c46 {
+            color: #000000;
+            font-weight: 700;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 24pt;
+            font-family: "Calibri";
+            font-style: normal
+        }
+
+        .c44 {
+            color: #000000;
+            font-weight: 400;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 11pt;
+            font-family: "Calibri";
+            font-style: normal
+        }
+
+        .c13 {
+            color: #000000;
+            font-weight: 700;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 12pt;
+            font-family: "Calibri";
+            font-style: normal
+        }
+
+        .c39 {
+            color: #000000;
+            font-weight: 400;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 10pt;
+            font-family: "Calibri";
+            font-style: normal
+        }
+
+        .c8 {
+            color: #172ba3;
+            font-weight: 700;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 18pt;
+            font-family: "Calibri";
+            font-style: normal
+        }
+
+        .c12 {
+            margin-left: 108pt;
+            padding-top: 24pt;
+            text-indent: 36pt;
+            padding-bottom: 6pt;
+            line-height: 1.0;
+            page-break-after: avoid;
+            text-align: left
+        }
+
+        .c19 {
+            padding-top: 9pt;
+            padding-bottom: 9pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: left;
+            height: 11pt
+        }
+
+        .c61 {
+            -webkit-text-decoration-skip: none;
+            color: #e06666;
+            font-weight: 400;
+            text-decoration: underline;
+            text-decoration-skip-ink: none;
+            font-family: "Calibri"
+        }
+
+        .c49 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c36 {
+            padding-top: 9pt;
+            padding-bottom: 9pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c47 {
+            padding-top: 10pt;
+            padding-bottom: 0pt;
+            line-height: 1.1500017857142857;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c0 {
+            padding-top: 2pt;
+            padding-bottom: 2pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c57 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.1499984375;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c63 {
+            padding-top: 9pt;
+            padding-bottom: 9pt;
+            line-height: 1.5;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c38 {
+            padding-top: 24pt;
+            padding-bottom: 6pt;
+            line-height: 1.0;
+            page-break-after: avoid;
+            text-align: center
+        }
+
+        .c34 {
+            padding-top: 8.5pt;
+            padding-bottom: 0pt;
+            line-height: 1.0;
+            text-align: left;
+            height: 11pt
+        }
+
+        .c10 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.0;
+            text-align: left;
+            height: 11pt
+        }
+
+        .c1 {
+            background-color: #ffffff;
+            font-size: 7pt;
+            font-family: "Times New Roman";
+            color: #001e00;
+            font-weight: 400
+        }
+
+        .c32 {
+            padding-top: 0pt;
+            text-indent: 5.7pt;
+            padding-bottom: 0pt;
+            line-height: 1.0;
+            text-align: left
+        }
+
+        .c53 {
+            background-color: #ffffff;
+            font-size: 12pt;
+            font-family: "Roboto";
+            color: #0d0d0d;
+            font-weight: 700
+        }
+
+        .c6 {
+            text-decoration: none;
+            vertical-align: baseline;
+            font-family: "Arial";
+            font-style: normal
+        }
+
+        .c17 {
+            background-color: #ffffff;
+            color: #1013a3;
+            font-weight: 700;
+            font-size: 18pt
+        }
+
+        .c7 {
+            background-color: #ffffff;
+            color: #1013a3;
+            font-weight: 400;
+            font-size: 12pt
+        }
+
+        .c9 {
+            background-color: #ffffff;
+            color: #001e00;
+            font-weight: 400;
+            font-size: 12pt
+        }
+
+        .c64 {
+            padding-top: 8.5pt;
+            padding-bottom: 0pt;
+            line-height: 1.15;
+            text-align: left
+        }
+
+        .c26 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.0;
+            text-align: right
+        }
+
+        .c2 {
+            background-color: #ffffff;
+            font-size: 12pt;
+            color: #001e00;
+            font-weight: 700
+        }
+
+        .c20 {
+            border-spacing: 0;
+            border-collapse: collapse;
+            margin-right: auto
+        }
+
+        .c22 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.15;
+            text-align: right
+        }
+
+        .c11 {
+            background-color: #ffffff;
+            font-size: 12pt;
+            color: #001e00
+        }
+
+        .c35 {
+            background-color: #ffffff;
+            max-width: 520.5pt;
+            padding: 69.5pt 33.5pt 58.9pt 42pt
+        }
+
+        .c58 {
+            font-family: "Calibri";
+            color: #172ba3;
+            font-weight: 700
+        }
+
+        .c55 {
+            font-size: 10pt;
+            font-family: "Calibri";
+            font-weight: 400
+        }
+
+        .c56 {
+            color: #000000;
+            font-weight: 400;
+            font-size: 11pt
+        }
+
+        .c24 {
+            margin-left: 72pt;
+            text-indent: 36pt
+        }
+
+        .c31 {
+            background-color: #ffffff;
+            color: #1013a3
+        }
+
+        .c16 {
+            height: 46.5pt
+        }
+
+        .c37 {
+            height: 11pt
+        }
+
+        .c54 {
+            height: 73.5pt
+        }
+
+        .c23 {
+            height: 45.8pt
+        }
+
+        .c33 {
+            text-indent: 5.7pt
+        }
+
+        .c27 {
+            margin-left: 66.3pt
+        }
+
+        .c25 {
+            font-family: "Times New Roman"
+        }
+
+        .title {
+            padding-top: 24pt;
+            color: #000000;
+            font-weight: 700;
+            font-size: 36pt;
+            padding-bottom: 6pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .subtitle {
+            padding-top: 18pt;
+            color: #666666;
+            font-size: 24pt;
+            padding-bottom: 4pt;
+            font-family: "Georgia";
+            line-height: 1.15;
+            page-break-after: avoid;
+            font-style: italic;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        li {
+            color: #000000;
+            font-size: 11pt;
+            font-family: "Arial"
+        }
+
+        p {
+            margin: 0;
+            color: #000000;
+            font-size: 11pt;
+            font-family: "Arial"
+        }
+
+        h1 {
+            padding-top: 24pt;
+            color: #000000;
+            font-weight: 700;
+            font-size: 24pt;
+            padding-bottom: 6pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h2 {
+            padding-top: 18pt;
+            color: #000000;
+            font-weight: 700;
+            font-size: 18pt;
+            padding-bottom: 4pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h3 {
+            padding-top: 14pt;
+            color: #000000;
+            font-weight: 700;
+            font-size: 14pt;
+            padding-bottom: 4pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h4 {
+            padding-top: 12pt;
+            color: #000000;
+            font-weight: 700;
+            font-size: 12pt;
+            padding-bottom: 2pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h5 {
+            padding-top: 11pt;
+            color: #000000;
+            font-weight: 700;
+            font-size: 11pt;
+            padding-bottom: 2pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h6 {
+            padding-top: 10pt;
+            color: #000000;
+            font-weight: 700;
+            font-size: 10pt;
+            padding-bottom: 2pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+    </style>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+</head>
+
+<body class="c35 doc-content">
+    <p class="c22"><span class="c58">CIN: U62020RJ2023PTC091477</span></p>
+    <div>
+        <span class="c8"></span><br/>
+            <span
+                style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 103.15px; height: 103.15px;">
+            <apex:image url="{!$Resource.AntrazalLogo}" 
+                    style="width: 103.15px; height: 70.15px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        title=""/></span>
+      
+        <p class="c22"><span class="c8">Antrazal Solutions Pvt. Ltd.</span></p>
+        <p class="c26 c33 c27"><span class="c39">F-5, Sangam Tower, Church Road,</span></p>
+        <p class="c26"><span class="c39">Jaipur, Rajasthan, 302001</span></p>
+        <hr/>
+        <p class="c10"><span class="c8"></span></p>
+    </div>
+    <p class="c22 c37"><span class="c39"></span></p>
+    <p class="c26 c37"><span class="c39"></span></p>
+    <p class="c26 c37"><span class="c39"></span></p>
+    <p class="c10 c24"><span class="c44"></span></p>
+    <p class="c15"><span class="c44"></span></p>
+    <p class="c27 c32"><span class="c55">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+            class="c44">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </p>
+    <p class="c10 c33 c27"><span class="c44"></span></p>
+    <p class="c10 c27 c33"><span class="c44"></span></p>
+    <p class="c10 c27"><span class="c44"></span></p>
+    <p class="c10 c27"><span class="c44"></span></p>
+    <p class="c10 c27"><span class="c44"></span></p>
+    <p class="c10"><span class="c46"></span></p>
+    <h1 class="c38" id="h.m9d0fr2py5lf"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 322.00px; height: 118.00px;">
+        <apex:image url="{!imageUrl}" alt="{!contentVersion.Title}" 
+                style="width: 322.00px; height: 118.00px; object-fit: cover; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                    title="{!contentVersion.Title}"/>
+        </span></h1>
+    <h1 class="c12" id="h.ea59ip1b8gyv"><span class="c61">Proposal &amp; Action Plan</span></h1>
+    <p class="c14"><span class="c29"></span></p>
+    <p class="c14"><span class="c29"></span></p>
+    <p class="c14"><span class="c29"></span></p>
+    <p class="c14"><span class="c29"></span></p>
+    <p class="c14"><span class="c29"></span></p>
+    <p class="c14"><span class="c29"></span></p>
+    <p class="c14"><span class="c29"></span></p>
+    <p class="c14"><span class="c29"></span></p>
+    <p class="c14"><span class="c29"></span></p>
+    <p class="c14"><span class="c29"></span></p>
+    <p class="c14"><span class="c29"></span></p>
+    <p class="c34"><span class="c13"></span></p>
+    <p class="c34"><span class="c13"></span></p>
+    <h1 class="c57" id="h.l7z6ikwep7fi"><span class="c5">Salesforce Service Proposal:</span></h1>
+    <h2 class="c47" id="h.w3zbw0to3btq"><span class="c6 c17">Executive Summary</span></h2>
+    <p class="c63"><span class="c6 c9"> <apex:outputField value="{!proposal.Summary__c}"/></span></p>
+    <h2 class="c47" id="h.ddcrw4ctxep9"><span class="c31">Challenges Faced</span></h2>
+                <apex:repeat value="{!lineItem}" var="item">                  
+                        <apex:outputField value="{!item.Challange_Faced__c}"/>  
+                </apex:repeat>
+    
+    <h2 class="c47" id="h.498gg456o944"><span class="c6 c17">Proposed Solution</span></h2>
+    			<apex:repeat value="{!lineItem}" var="item">                  
+                        <apex:outputField value="{!item.Solution__c}"/>  
+                </apex:repeat>
+    
+    
+    <h2 class="c47" id="h.4iwol9zdsa0p"><span class="c6 c17">Services, Estimated Hours, and Pricing</span></h2><a
+        id="t.2edbe807f643e5217eb0d50feb86ea24c58fb686"></a><a id="t.0"></a>
+    <table class="c20">
+        <tr class="c16">
+            <td class="c41" colspan="1" rowspan="1">
+                <p class="c0"><span class="c6 c2">Service Offered</span></p>
+            </td>
+            <td class="c59" colspan="1" rowspan="1">
+                <p class="c0"><span class="c6 c2">Description</span></p>
+            </td>
+            <td class="c62" colspan="1" rowspan="1">
+                <p class="c0"><span class="c6 c2">Estimated Hours</span></p>
+            </td>
+            <td class="c50" colspan="1" rowspan="1">
+                <p class="c0"><span class="c2 c6">Rate per Hour (INR)</span></p>
+            </td>
+            <td class="c65" colspan="1" rowspan="1">
+                <p class="c0"><span class="c6 c2">Total Cost (INR)</span></p>
+            </td>
+        </tr>
+        
+         <apex:repeat value="{!lineItem}" var="item"> 
+        <tr class="c54">
+            <td class="c52" colspan="1" rowspan="1">
+                <p class="c0"><span class="c11">
+                                     
+                        <apex:outputField value="{!item.Service_Offered__c}"/>  
+                	</span></p>
+            </td>
+            <td class="c45" colspan="1" rowspan="1">
+                <p class="c0"><span class="c6 c9">
+                            
+                        <apex:outputField value="{!item.Description__c}"/>  
+                	</span></p>
+            </td>
+            <td class="c43" colspan="1" rowspan="1">
+                <p class="c0"><span class="c11"><apex:outputField value="{!item.Estimated_Hours__c}"/>  </span><span class="c6 c9">&nbsp;</span></p>
+            </td>
+            <td class="c30" colspan="1" rowspan="1">
+                <p class="c0"><span class="c11">&#8377;<apex:outputField value="{!item.Rate_Per_Hour__c}"/></span></p>
+            </td>
+            <td class="c4" colspan="1" rowspan="1">
+                <p class="c0"><span class="c11">&#8377;<apex:outputField value="{!item.Total_Cost__c}"/></span></p>
+            </td>
+        </tr>
+        </apex:repeat>
+    </table>
+    <p class="c19"><span class="c6 c2"></span></p>
+    <p class="c36"><span class="c2">Total Estimated Cost for Services: </span><span class="c11">&#8377;</span><span
+            class="c6 c2"><apex:outputField value="{!proposal.Total_Estimated_Cost__c}"/> INR</span></p>
+    <p class="c36"><span class="c6 c2">Total Discount: <apex:outputField value="{!proposal.Total_Discount__c}"/></span></p>
+    <p class="c36"><span class="c2">Price After Discount: </span><span class="c11">&#8377;</span><span
+            class="c53"><apex:outputField value="{!proposal.Price_After_Discount__c}"/> INR</span></p>
+    <h2 class="c47" id="h.esrowj79ps4a"><span class="c6 c17">Project Delivery Timeline</span></h2>
+    <p class="c36"><span class="c6 c9">The project is scheduled for completion and delivery at <b><apex:outputField value="{!proposal.Delivery_Date__c}"/></b> according to the date
+            of agreement.</span></p>
+    <h2 class="c47" id="h.7n98h3dj6noi"><span class="c6 c17">Conclusion</span></h2>
+    <p class="c36"><span class="c6 c9"><apex:outputField value="{!proposal.Conclusion__c}"/></span></p>
+    <p class="c37 c49"><span class="c6 c56"></span></p>
+    <p class="c37 c64"><span class="c13"></span></p>
+    <div>
+        <p class="c42"><span
+                style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 70.50px; height: 70.50px;">
+            <apex:image url="{!$Resource.AntrazalLogo}"
+                    style="width: 70.50px; height: 70.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        title=""/></span></p>
+    </div>
+</body>
+
+</html>
+</apex:page>
