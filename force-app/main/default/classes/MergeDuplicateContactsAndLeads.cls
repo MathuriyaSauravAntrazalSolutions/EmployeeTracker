@@ -1,35 +1,45 @@
 global class MergeDuplicateContactsAndLeads implements Database.Batchable<sObject>, Database.Stateful {
-
-    Lead__c settings = Lead__c.getInstance();
-    String objectName = settings.Object__c;
-    String operator = settings.Operator__c;
-    String[] fields = settings.Fields__c.split(',');
-
-   
+    static String[] fields;  
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        // SOQL query 
-        String queryFields = String.join(fields, ',');
-        String query = 'SELECT Id, ' + queryFields + ' FROM ' + objectName + ' WHERE ';
+        // Query custom metadata for settings
+        List<Dedup_Metadata_Setting__mdt> settingsList = [SELECT Object__c, Operator__c, Fields__c FROM Dedup_Metadata_Setting__mdt];
+        
+        for (Dedup_Metadata_Setting__mdt settings : settingsList) {
+            String objectName = settings.Object__c;
+            String operator = settings.Operator__c;
+            fields = settings.Fields__c.split(',');
 
-        // Building the where condition based on operator
-        if (operator == 'AND') {
-            for (Integer i = 0; i < fields.size(); i++) {
-                query += fields[i] + ' != null';
-                if (i < fields.size() - 1) {
-                    query += ' AND ';
+            // SOQL query 
+            String queryFields = String.join(fields, ',');
+            String query = 'SELECT Id, ' + queryFields + ' FROM ' + objectName + ' WHERE ';
+
+            // Building the where condition based on operator
+            if (operator == 'AND') {
+                for (Integer i = 0; i < fields.size(); i++) {
+                    query += fields[i] + ' != null';
+                    if (i < fields.size() - 1) {
+                        query += ' AND ';
+                    }
                 }
-            }
-        } else if (operator == 'OR') {
-            query += '(';
-            for (Integer i = 0; i < fields.size(); i++) {
-                query += fields[i] + ' != null';
-                if (i < fields.size() - 1) {
-                    query += ' OR ';
+            } else if (operator == 'OR') {
+                query += '(';
+                for (Integer i = 0; i < fields.size(); i++) {
+                    query += fields[i] + ' != null';
+                    if (i < fields.size() - 1) {
+                        query += ' OR ';
+                    }
                 }
+                query += ')';
             }
-            query += ')';
+            
+            // Check if the query returns any records
+            List<sObject> records = Database.query(query);
+            if (!records.isEmpty()) {
+                return Database.getQueryLocator(query);
+            }
         }
-        return Database.getQueryLocator(query);
+        
+        return null;
     }
 
     global void execute(Database.BatchableContext BC, List<sObject> scope) {
@@ -38,7 +48,6 @@ global class MergeDuplicateContactsAndLeads implements Database.Batchable<sObjec
 
     private void processRecords(List<sObject> scope) {
         Map<String, List<sObject>> recordMap = new Map<String, List<sObject>>();
-
         for (sObject record : scope) {
             String key = '';
             for (String field : fields) {
@@ -66,7 +75,6 @@ global class MergeDuplicateContactsAndLeads implements Database.Batchable<sObjec
     }
 
     private void mergeRecords(sObject primaryRecord, sObject duplicateRecord) {
-        // Use Database.merge to merge records
         Database.MergeResult mergeResult = Database.merge(primaryRecord, duplicateRecord, false);
         if (mergeResult.isSuccess()) {
             System.debug('Merge successful for duplicate record with Id: ' + duplicateRecord.Id);
