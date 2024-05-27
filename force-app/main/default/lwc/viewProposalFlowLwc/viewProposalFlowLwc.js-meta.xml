@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Flow LWC Component</masterLabel>
+    <description>Blank Lwc Component For View Proposal Flow</description>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="content" label="HTML Content" type="String" required='true' description="The HTML content."/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -10,19 +10,76 @@ import INVOKE_GENERATE_CHANNEL  from '@salesforce/messageChannel/Invoke_Generate
 export default class GenerateProposal extends NavigationMixin(
     LightningElement
 ){
-
-
-
+    @api
+    flag = false;
+    @track isModalOpen = false;
+    @track isMinimized = false;
+    @track isNonMinimized = false;
+    @wire(MessageContext)
+    messageContext;
     @api recordId; // OpportunityId
     @track proposal
     @track proposal = {proposalFields:{file:null, Opportunity__c:'',Price_After_Discount__c:0, Total_Estimated_Hours__c:0, Total_Discount__c:0, Total_Estimated_Cost__c:0, Delivery_Date__c:null, Conclusion__c:'', Summary__c:''}, lineItems:[]};
-    @wire(CurrentPageReference)
-    getStateParameters(currentPageReference) {
-        // console.log(currentPageReference);
-        if (currentPageReference.type === "standard__quickAction") {
-            let quickActionPath = currentPageReference.attributes.apiName; // ex: Opportunity.My_Quick_Action
-            console.log(quickActionPath.split('.')[1]); // Ex: My_Quick_Action
-            this.isShowModal = true;
+
+    @api
+    openModal() {
+        this.isModalOpen = true;
+        this.isMinimized = false;
+        this.isNonMinimized = true;
+        setTimeout(()=>{
+            console.log("In Open Modal");
+            const IconBtns = document.querySelector(".c-generate-proposal");
+            console.log(IconBtns);
+            if(IconBtns) IconBtns.style.position = "relative";
+        }, 200)
+    }
+
+    handleMinimize() {
+        this.isMinimized = !this.isMinimized;
+        this.isNonMinimized = !this.isNonMinimized
+        this.updateModalClass();
+        console.log('minimized');
+    }
+
+    handleClose() {
+        this.isModalOpen = false;
+        this.isNonMinimized = false;
+    }
+
+    updateModalClass() {
+        const modalElement = this.template.querySelector('.slds-modal');
+        if (modalElement) {
+            console.log(modalElement);
+            modalElement.classList.toggle('minimized', this.isMinimized);
+            console.log(modalElement);
+        }
+    }
+
+    @api
+    get modalClass() {
+        return this.isMinimized ? 'slds-modal minimized slds-fade-in-open' : 'slds-modal slds-fade-in-open';
+    }
+
+    subscribeToMessageChannel() {
+        this.subscription = subscribe(
+          this.messageContext,
+          INVOKE_GENERATE_CHANNEL,
+          (message) => this.handleMessage(message)
+        );
+    }
+
+    connectedCallback() {
+        if(!this.flag){
+            this.subscribeToMessageChannel();
+        }
+        else{
+            this.isModalOpen = true;
+        }
+    }
+
+    handleMessage(message){
+        if(message.isModalOpen){
+            this.openModal();
         }
     }
 
@@ -95,81 +152,6 @@ export default class GenerateProposal extends NavigationMixin(
             }),
         );
     }
-
-
-
-    @api
-    flag = false;
-    @track isModalOpen = false;
-    @track isMinimized = false;
-    @track isNonMinimized = false;
-    @wire(MessageContext)
-    messageContext;
-
-    @api
-    openModal() {
-        this.isModalOpen = true;
-        this.isMinimized = false;
-        this.isNonMinimized = true;
-        setTimeout(()=>{
-            console.log("In Open Modal");
-            const IconBtns = document.querySelector(".c-generate-proposal");
-            console.log(IconBtns);
-            if(IconBtns) IconBtns.style.position = "relative";
-        }, 200)
-    }
-
-    handleMinimize() {
-        this.isMinimized = !this.isMinimized;
-        this.isNonMinimized = !this.isNonMinimized
-        this.updateModalClass();
-        console.log('minimized');
-    }
-
-    handleClose() {
-        this.isModalOpen = false;
-        this.isNonMinimized = false;
-    }
-
-    updateModalClass() {
-        const modalElement = this.template.querySelector('.slds-modal');
-        if (modalElement) {
-            console.log(modalElement);
-            modalElement.classList.toggle('minimized', this.isMinimized);
-            console.log(modalElement);
-        }
-    }
-
-    @api
-    get modalClass() {
-        return this.isMinimized ? 'slds-modal minimized slds-fade-in-open' : 'slds-modal slds-fade-in-open';
-    }
-
-    subscribeToMessageChannel() {
-        this.subscription = subscribe(
-          this.messageContext,
-          INVOKE_GENERATE_CHANNEL,
-          (message) => this.handleMessage(message)
-        );
-    }
-
-
-    connectedCallback() {
-        if(!this.flag){
-            this.subscribeToMessageChannel();
-        }
-        else{
-            this.isModalOpen = true;
-        }
-    }
-
-
-    handleMessage(message){
-        if(message.isModalOpen){
-            this.openModal();
-        }
-    }
-
 
     handleSuccess() {
         // Display a success toast message

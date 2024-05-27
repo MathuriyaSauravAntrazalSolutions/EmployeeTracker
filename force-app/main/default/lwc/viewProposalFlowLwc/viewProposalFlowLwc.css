@@ -1,0 +1,23 @@
+table {
+    border: 2px solid black; /* Add blue border to the table */
+}
+tr{
+    border-bottom: 2px solid black;
+}
+.save-button{
+    background-color: rgb(46, 139, 226);
+    cursor: pointer; 
+    color: white;
+    border-color: white;
+}
+
+.view-button
+{
+    background-color: rgb(46, 139, 226);
+    cursor: pointer; 
+    color: white;
+    border-color: white;
+}
+td{
+text-align: center;
+}

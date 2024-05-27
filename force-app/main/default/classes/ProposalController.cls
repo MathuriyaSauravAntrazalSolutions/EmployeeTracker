@@ -2,8 +2,6 @@ public with sharing class ProposalController {
     public class MyCustomException extends Exception {}
     @AuraEnabled
     public static void createRecord(Map<String, Object> proposalFields, List<Map<String, Object>> lineItems) {
-            // System.Debug(proposalFields);
-            // System.Debug(lineItems);
             Proposal__c newProposal = new Proposal__c();
 
             // Create a new Proposal record
@@ -27,8 +25,6 @@ public with sharing class ProposalController {
             newProposal.Summary__c = (String)proposalFields.get('Summary__c');
             newProposal.Total_Discount__c = (Double)proposalFields.get('Total_Discount__c');
             newProposal.Opportunity__c = (ID)proposalFields.get('Opportunity__c');
-            // newProposal.Total_Estimated_Cost__c = (Number)proposalFields.get('Total_Estimated_Cost__c'); // come up from rollup
-            // newProposal.Total_Estimated_Hours__c = (Number)proposalFields.get('Total_Estimated_Hours__c'); // come up from rollup
             // Insert the Proposal record
             try {    
                 insert newProposal;
