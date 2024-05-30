@@ -27,8 +27,9 @@ public with sharing class SendProposalController {
     @AuraEnabled(cacheable=true)
     public static void sendProposal(Id opportunityId, String contactEmail, List<ID> ccIds, List<String> eeIds) {
         // Retrieve PDF attachment from Opportunity's Notes and Attachments
-        ContentDocumentLink attachment = [SELECT ContentDocumentId FROM ContentDocumentLink WHERE LinkedEntityId = :opportunityId And ContentDocument.FileExtension='pdf' Order By SystemModstamp DESC LIMIT 1];
-
+        List<ContentDocumentLink> ctdls = [SELECT ContentDocumentId FROM ContentDocumentLink WHERE LinkedEntityId = :opportunityId And ContentDocument.FileExtension='pdf' Order By SystemModstamp DESC LIMIT 1];
+        ContentDocumentLink attachment = null;
+        if(ctdls.size()>0)  attachment = ctdls[0];
         if(attachment!=null){
             ContentVersion cversion = SendProposalController.getContentVersion(attachment);
             blob WOCFbody = cversion.VersionData;
@@ -69,7 +70,7 @@ public with sharing class SendProposalController {
                 throw new MyCustomException('Unable to Send Mail Due To Invalid Email Address - '+str[1].substring(0, str[1].length()-1));
             }
         } else {
-            throw new MyCustomException('Unable to Send Mail To Contact');
+            throw new MyCustomException('Unable to Send Mail To Contact Bcoz Proposal Is Not Available');
             // Handle case where no PDF attachment is found
         }
     }

@@ -15,6 +15,7 @@ const COLUMNS = [
 export default class ViewProposal  extends LightningElement {
     // Opportunity Id
     @api recordId;
+    @track loading = false;
     @track proposals=[]
     listResult=[]
     updatedData = [];
@@ -24,6 +25,7 @@ export default class ViewProposal  extends LightningElement {
     getProposals({data, error}){
         if(data){
             this.listResult = JSON.parse(JSON.stringify(data));
+            if(data.length>0) this.loading = true;
             for(let i = 0; i < data.length; i++){
                 let row = this.listResult[i];
                 row.index = i;

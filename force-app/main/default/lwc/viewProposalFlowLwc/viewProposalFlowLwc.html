@@ -1,15 +1,20 @@
 <!-- opportunityProposalList.html -->
 <template>
     <lightning-card title="" icon-name="standard:document">
-        <div class="slds-m-around_medium">
-            <lightning-datatable
-                key-field="Id"
-                data={proposals}
-                columns={columns}
-                hide-checkbox-column="true"
-                onrowaction={handleRowAction}
-                row-number-offset>
-            </lightning-datatable>
-        </div>
+        <template if:true={loading}>
+            <div class="slds-m-around_medium">
+                <lightning-datatable
+                    key-field="Id"
+                    data={proposals}
+                    columns={columns}
+                    hide-checkbox-column="true"
+                    onrowaction={handleRowAction}
+                    row-number-offset>
+                </lightning-datatable>
+            </div>
+        </template>
+        <template if:false={loading}>
+            <h1> No Data Is Available</h1>
+        </template>
     </lightning-card>
 </template>

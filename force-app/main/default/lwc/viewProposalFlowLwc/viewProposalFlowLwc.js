@@ -17,6 +17,7 @@ export default class ViewProposalFlowLwc extends LightningElement {
     @api content;
     @track proposals=[]
     listResult=[]
+    @track loading = false;
     updatedData = [];
     columns = COLUMNS;
 
@@ -25,8 +26,15 @@ export default class ViewProposalFlowLwc extends LightningElement {
             console.log(this.content);
             const parsedData = this.parseContent(this.content);
             console.log(parsedData);
+            
             // Iterate over each row of parsedData
+            if(!parsedData || parsedData.length<0){
+                return;
+            }
             console.log(parsedData[0].length);
+            if(parsedData[0].length>0){
+                this.loading = true;
+            }
             for (let i = 0; i < parsedData[0].length; i++) {
                 const Id = parsedData[0][i];
                 const Name = parsedData[1][i];

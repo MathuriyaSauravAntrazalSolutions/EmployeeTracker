@@ -39,30 +39,8 @@ public class GetAccessToken{
             wrapObj = (Wrapper)Json.deserialize(str,Wrapper.class);
             accessToken = wrapObj.access_token;
             instanceUrl = wrapObj.instance_url;
-            System.Debug(wrapObj);
-            methodGet();
         }catch(Exception ex){
             System.debug('Mydebug:Exception:getAccessToken || Line Number - '+ ex.getLineNumber() + ' || Error Message - ' + ex.getMessage());
         }
-    }
-        
-    // Retrieve the Contacts from the otehr org.
-    public void methodGet(){
-        HttpRequest req = new HttpRequest();
-        req.setMethod('GET');
-        
-        req.setEndpoint(wrapObj.instance_url+'/services/apexrest/Antazal/Internal/V1/Project');
-        req.setHeader('Authorization', 'OAuth '+wrapObj.access_token);
-        Http http = new Http();
-        HTTPResponse res = http.send(req);
-        
-        System.debug('***Response***** ' + res.getBody());
-        //---------------------Here ------------------
-        /*JSONParser parser = JSON.createParser(res.getBody());
-        do{
-            parser.nextToken();
-        }while(parser.hasCurrentToken() && !'records'.equals(parser.getCurrentName()));
-            parser.nextToken();
-        List acc = (List) parser.readValueAs(List.class);*/
     }
 }
